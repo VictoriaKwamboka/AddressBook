@@ -5,6 +5,10 @@ function Contact(first, last){
     this.lastName = last
 }
 
+Contact.prototype.fullName = function(){
+    return this.firstName + " " + this.lastName;
+}
+
 //create a jQuery callback to collect user input and assign it to variables
 // use the user input to create new Contact objects
 // append the new objects to the list
@@ -19,14 +23,15 @@ $(document).ready(function(){
 
         let newContact = new Contact(inputtedFirstName,inputtedLastName)
 
-        $('ul#contacts').append('<li><span class= "contact">' + newContact.firstName + '</span></li>')
+        $('ul#contacts').append("<li><span class= 'contact'>" + newContact.fullName() + "</span></li>")
     });
+   
     //show the contact information when the contact is clicked
 
     $('.contact').last().click(function(){
         $('#show-contact').show()
-        // $('#show contact h2').text(newContact.firstName);
-        // $('.first-name').text(newContact.firstName)
-        // $('.last-name').text(newContact.lastName)
+        $('#show contact h2').text(newContact.firstName);
+        $('.first-name').text(newContact.firstName)
+        $('.last-name').text(newContact.lastName)
     })
 })
